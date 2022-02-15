@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="pareriCSS.css">
+<title> Pareri </title>
+	
+</head>
+
+<body>	
+
+<!--NavBar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<div class="container-fluid">
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+	data-target="#raspunsN">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="raspunsN">
+		<ul class="navbar-nav ml-auto"><!--ajusteaza butoanele-->
+			<li class="nav-item">
+				<a class="nav-link" href="main.html"> Home </a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://www.booking.com/searchresults.en-gb.html?aid=311984;label=smart-xLRF_GpVYWHBhXhdo6NjcgS86545645125%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-23999890443%3Alp20911%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tSVYkc2RlIyh9YTQUGSsRwx9_3qo3uPTHyoo;sid=14d7dc5e605e7674a629596b54b1d368;city=-1170398;expand_sb=1;highlighted_hotels=249882;hlrd=no_dates;keep_landing=1;redirected=1;source=hotel&gclid=EAIaIQobChMI0t675-Ll6QIVQawYCh2WTwlCEAAYASAAEgJ3Z_D_BwE&room1=A,A,;"> Booking </a>
+			</li>
+		</ul>
+	</div>
+</div>
+</nav>	
+
+<div class="container-fluid padding">
+<div class="row padding">
+	 <div class="col-md-12 col-lg-6" style="top: 55px">
+<span class="heading">Hotel Rating</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<p>3.1 medie facuta pe 354 reviews.</p>
+<hr style="border:3px solid #f1f1f1">
+
+<div class="row">
+  <div class="side">
+    <div>5 stele</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>150</div>
+  </div>
+  <div class="side">
+    <div>4 stele</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>63</div>
+  </div>
+  <div class="side">
+    <div>3 stele</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>115</div>
+  </div>
+  <div class="side">
+    <div>2 stele</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>6</div>
+  </div>
+  <div class="side">
+    <div>o stea</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>20</div>
+  </div>
+</div>
+	</div>
+<div class="col-lg-6">
+	<div class="ajax-container">
+		<input type="button" id="btnAfiseazaPareri" value="Afiseaza review" /><div class="display-data">			
+		</div>
+	</div>
+</div>
+
+
+</div>
+</div>
+<!--<script src="pareriJS.js"></script>-->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+			  
+<script>
+	var count = 0;
+	
+	$("#btnAfiseazaPareri").click(function(){
+		getPareriSiAfiseaza();
+	});
+	
+	function getPareriSiAfiseaza(){
+		$.ajax({		
+			url:"https://jsonplaceholder.typicode.com/comments",
+			method:"GET"
+		}).done(function(data){
+			var start = count > 0 ? 5 * count : count;
+			var end = start + 5;
+			var str = '';
+			for(var i=start; i<end; i++){
+				str += '<div class="item-details">' + 
+						'Id postare = ' + data[i].postId + '<br />' +
+						'Nr. review= ' + data[i].id + '<br />' +
+						'Nume = ' + data[i].name + '<br />' +
+						'Utilizator = ' + data[i].email + '<br />' +
+						'Comentariu = ' + data[i].body + '<br />' +
+						'</div>';
+			}
+			
+			if(start == data.length){
+				count = 0;
+				$(".display-data").empty();
+				$(".display-data").append("Lista parcursa.");
+				return;
+			}
+			
+			count++;
+			$(".display-data").empty();
+			$(".display-data").append(str);
+		})
+	}
+
+</script>
+</body>
+</html>

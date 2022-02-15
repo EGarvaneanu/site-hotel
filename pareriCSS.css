@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  margin: 0 auto; 
+  max-width: 800px;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Asezare pe 3 coloane */
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+
+.middle {
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+
+/* Textul din dreapta */
+.right {
+  text-align: right;
+}
+
+/* Spatiu de dupa coloane */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Container-ul pt segmente */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Segemente individuale */
+.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+/* Responsive layout - ajuta la asezarea coloanelor*/
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  /* Pe ecranele mici, textul din dreapta dispare*/
+  .right {
+    display: none;
+  }
+}
+
+  body{
+    font-family: sans-serif;
+    background-image: url("fundal2.jpg");
+  }
+  html{
+    background-size: cover;
+  }
+  h1{
+    text-align: center;
+    color: brown;
+  }
+  p{
+    color: brown;
+  }
+
+/*Caracteristici comentarii*/
+  .ajax-container{
+    width: 98%;
+    margin: 50px auto;
+  }
+  #btnAfiseazaPareri{
+    height: 50px;
+    width: 350px;
+    border: 1px solid white;
+    border-radius: 6px;
+    color: white;
+    background: brown;
+    outline: none;
+    font-size: 20px;
+    padding: 10px;
+  }
+  #btnAfiseazaPareri:hover{
+    cursor: pointer;
+  }
+  .item-details{
+    margin-top: 10px;
+    border: 1px solid white;
+    padding: 6px;
+    color: #32024d;
+    background-image: url("comentariu.jfif");
+    opacity: 0.6;
+  }
